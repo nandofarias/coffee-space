@@ -1,0 +1,10 @@
+version: "2"
+services:
+  node:
+    image: "node:alpine"
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - ./:/usr/src/app
+    expose:
+      - "3000"

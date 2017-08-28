@@ -1,0 +1,21 @@
+{
+  "name": "coffee-space",
+  "version": "1.0.0",
+  "description": "Open source code for chat",
+  "main": "index.js",
+  "repository": "git@github.com:nandofarias/coffee-space.git",
+  "author": "Fernando Henrique Coelho Farias <nandofarias@me.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "npx nodemon"
+  }
+  "dependencies": {
+    "bluebird": "3.5.0",
+    "body-parser": "1.17.2",
+    "express": "4.15.4",
+    "mongoose": "4.11.8",
+    "morgan": "1.8.2",
+    "socket.io": "2.0.3",
+    "socket.io-redis": "5.2.0"
+  }
+}
