@@ -1,10 +1,24 @@
-version: "2"
+version: "3"
 services:
   node:
-    image: "node:alpine"
-    environment:
-      - NODE_ENV=development
+    image: node:alpine
     volumes:
       - ./:/usr/src/app
-    expose:
-      - "3000"
+    ports:
+      - 3000:3000
+  redis:
+    image: redis:alpine
+    volumes:
+      - ~/volumes/redis:/data
+    ports:
+      - 6379:6379
+  mongodb:
+    image: mongo:latest
+    volumes:
+      - ~/volumes/mongodb:/data/db
+    ports:
+      - 27017:27017
+
+networks:
+  default:
+    driver: bridge
