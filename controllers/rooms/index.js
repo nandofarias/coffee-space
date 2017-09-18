@@ -1,7 +1,5 @@
 const io = require('../../infrastructure/socketio');
-const logger = require('../../infrastructure/logger');
 const controller = require('./controller');
-const Room = require('../../models/room');
 
 io.use(controller.joinExistingRooms);
 

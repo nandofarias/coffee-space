@@ -1,13 +1,12 @@
 const auth = require('../../services/auth');
 
-async function authenticate (socket, next)  {
+async function authenticate(socket, next) {
   try {
     const params = socket.handshake.query;
     const userReference = await auth(params.userType, params.userId);
     if (!userReference) {
-      next(new Error('User not found'))
-    };
-    socket.userReference = userReference;
+      next(new Error('User not found'));
+    }
     next();
   } catch (error) {
     next(error);
