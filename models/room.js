@@ -4,21 +4,14 @@ async function findAllByUser(type, referenceId) {
   return this.find({ participants: { $elemMatch: { type, referenceId } } });
 }
 
-async function findOrCreate(participants) {
+async function findByParticipants(participants) {
   try {
     if (!participants) throw new Error('Participants must be passed');
-    let room = await this.findOne({
+    const room = await this.findOne({
       participants: {
         $all: participants.map(participant => ({ $elemMatch: participant }))
       }
     });
-    if (!room) {
-      try {
-        room = await new this({ participants }).save();
-      } catch (error) {
-        throw error;
-      }
-    }
     return room;
   } catch (error) {
     throw error;
@@ -43,7 +36,7 @@ const Room = new mongoose.Schema({
 });
 
 Room.statics.findAllByUser = findAllByUser;
-Room.statics.findOrCreate = findOrCreate;
+Room.statics.findByParticipants = findByParticipants;
 Room.methods.addMessage = addMessage;
 Room.pre('save', (next) => {
   this.lastUpdate = Date.now();

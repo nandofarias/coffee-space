@@ -18,9 +18,19 @@ describe('/models/room', async () => {
   it('should find a room', async () => {
     const findOneStub = sinon.stub(Room, 'findOne');
     findOneStub.returns({ id: 1, messages: [] });
-    const room = await Room.findOrCreate([]);
+    const room = await Room.findByParticipants([]);
     expect(room.id).to.eql(1);
     expect(room.messages).to.eql([]);
+    findOneStub.restore();
+  });
+
+  it('should add a message to the room', async () => {
+    const saveStub = sinon.stub(Room.prototype, 'save');
+    const room = new Room();
+    await room.addMessage({ type: 'userTest', referenceId: '1' }, 'test');
+    expect(room.messages[0].body).to.be.eql('test');
+    expect(saveStub).to.have.callCount(1);
+    saveStub.restore();
   });
 });
 
