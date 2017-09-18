@@ -2,10 +2,14 @@ version: "3"
 services:
   node:
     image: node:alpine
+    command: 'npm start --prefix /usr/src/app'
     volumes:
       - ./:/usr/src/app
     ports:
       - 3000:3000
+    environment:
+      - MONGO_URI=mongodb://mongodb:27017/coffee_space
+      - REDIS_URI=redis://redis:6379
   redis:
     image: redis:alpine
     volumes:
