@@ -22,5 +22,5 @@ docker-compose up -d
 docker network create --driver overlay coffeespace_network
 docker service create --name mongodb --network=coffeespace_network mongo
 docker service create --name redis --network=coffeespace_network redis:alpine
-docker service create --name app --network=coffeespace_network coffeespace_node
+docker service create --name app --network=coffeespace_network --publish 3000:3000 coffeespace_node
 ```
