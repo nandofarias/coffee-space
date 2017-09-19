@@ -1,0 +1,14 @@
+config:
+  target: "http://localhost:3000"
+  socketio:
+    transports: ["websocket"]
+    query:
+      userType: "VENDOR"
+      userId: "1"
+  phases:
+    - duration: 120
+      arrivalRate: 15
+scenarios:
+  - engine: "socketio"
+    flow:
+      - think: 60
