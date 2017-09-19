@@ -7,7 +7,7 @@ async function joinExistingRooms(socket, next) {
     const params = socket.handshake.query;
     const rooms = await Room.findAllByUser(params.userType, params.userId);
     rooms.forEach(room => socket.join(room._id.toString()));
-    io.to(socket.id).emit('connected', rooms);
+    io.in(socket.id).emit('connected', rooms);
     next();
   } catch (error) {
     logger.error(`User could not connect to the rooms: ${error}`, socket.user);

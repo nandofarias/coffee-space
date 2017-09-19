@@ -4,6 +4,7 @@ module.exports = {
         "mocha": true
     },
     rules: {
-        "comma-dangle": ["error", "never"]
+        "comma-dangle": ["error", "never"],
+        "no-underscore-dangle": [2, { "allow": ["_id"] }]
     }
 };

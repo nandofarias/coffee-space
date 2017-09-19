@@ -7,7 +7,7 @@ async function authenticate(socket, next) {
     if (!userReference) {
       next(new Error('User not found'));
     }
-    next();
+    next('success');
   } catch (error) {
     next(error);
   }
