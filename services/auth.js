@@ -7,6 +7,9 @@ async function clientAuth() {
 }
 
 async function auth(type, id) {
+  if (!auth.operationsByType[type.toLowerCase()]) {
+    throw new Error('Authentication method not configured');
+  }
   return auth.operationsByType[type.toLowerCase()](id);
 }
 
