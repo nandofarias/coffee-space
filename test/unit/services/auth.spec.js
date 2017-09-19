@@ -15,4 +15,12 @@ describe('/services/auth', () => {
     expect(user.id).to.equal(1);
     expect(user.name).to.equal('client 1');
   });
+
+  it('should throw an error calling a non configured method', async () => {
+    try {
+      await auth('error', 1);
+    } catch (error) {
+      expect(error.message).to.match(/Authentication method not configured/);
+    }
+  });
 });
