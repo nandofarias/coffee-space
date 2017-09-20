@@ -5,7 +5,7 @@ const proxyquire = require('proxyquire').noCallThru();
 
 const authStub = sinon.stub();
 const controller = proxyquire('../../../controllers/auth/controller.js', {
-  auth: authStub
+  '../../services/auth': authStub
 });
 
 const { expect } = chai;
