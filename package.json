@@ -8,7 +8,7 @@
   "license": "MIT",
   "scripts": {
     "start": "npx nodemon",
-    "test": "npx mocha -R nyan test/**/*.spec.js",
+    "test": "npx nyc mocha -R nyan test/**/*.spec.js",
     "load-test": "npx artillery run load-test.yml"
   },
   "dependencies": {
@@ -29,6 +29,7 @@
     "eslint-plugin-import": "2.7.0",
     "mocha": "3.5.3",
     "nodemon": "1.12.0",
+    "nyc": "11.2.1",
     "proxyquire": "1.8.0",
     "sinon": "3.3.0",
     "sinon-chai": "2.13.0"
