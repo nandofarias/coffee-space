@@ -16,7 +16,7 @@
     "body-parser": "1.17.2",
     "express": "4.15.4",
     "mongoose": "5.7.5",
-    "morgan": "1.8.2",
+    "morgan": "1.9.1",
     "socket.io": "2.0.3",
     "socket.io-redis": "5.2.0",
     "winston": "2.3.1"
